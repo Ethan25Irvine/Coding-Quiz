@@ -5,25 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Coding Quiz</title>
+    <!-- link to bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link type="text/javascript" href="script.js">
+   <!-- link to jquery -->
+   <script
+   src="http://code.jquery.com/jquery-3.4.1.js"
+   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+   crossorigin="anonymous">
+   </script>
+    <!-- link to other files in folder -->
+    <script src="script.js"></script>
 </head>
 <body>
     <h1 class="text-center text-danger">Coding Quiz!</h1>
+      
+       
+        
+
     <!-- This div is going to allow our javascript to hide everything bellow -->
-    <div class="questions container mt-5 text-center border border-primary">
-        <h2 class="mt-5">Quistion 1: hfdsuhfjkdshfjksdhfj</h2>
-        <!-- Possible answers for Q1 -->
-        <div class="row offset-lg-4 offset-md-3 offset-sm-2 mb-1">
-             <button type="button" class="btn btn-primary mr-1">A: hfusdihfaiaushgfiusa</button>
-            <button type="button" class="btn btn-primary">B: gsdfgfjhsdgfisdafksf</button>
+    <div class="main container mt-5 text-center border border-primary"> 
+        <!-- start button -->
+        <button type="button" id="start" class="btn btn-lg btn-danger mr-1">Start Quiz!</button>
+
+        <!-- this will be where our questions will go but will be empty which allows us to send what ever question we are on here and replace the old question -->
+        <div class="mainArea">
+            <h2 id='question'class="mt-5"></h2>
+                <!-- Possible answers for the question -->
+                <div class="row offset-lg-4 offset-md-3 offset-sm-2 mb-1">
+                    <button type="button" id='option1' class=" option btn btn-primary mr-1"></button>
+                    <button type="button" id='option2' class=" option btn btn-primary"></button>
+                </div>
+                <div class="row offset-lg-4 offset-md-3 offset-sm-2 mb-5">
+                    <button type="button" id='option3' class=" option btn btn-primary mr-1"></button>
+                    <button type="button" id='option4' class=" option btn btn-primary"></button>
+                </div>
         </div>
-        <div class="row offset-lg-4 offset-md-3 offset-sm-2 mb-5">
-             <button type="button" class="btn btn-primary mr-1">C: hfdjshgfdskjhfjkdshf</button>
-             <button type="button" class="btn btn-primary">D: fhdgsjhfdjskhfjkdshh</button>
-        </div>
-    </div>
+    </div> 
     
+
+    <script>
+
+        // Questions
+        const questions = [
+        {
+            title: "Commonly used data types DO NOT include:",
+            choices: ["strings", "booleans", "alerts", "numbers"],
+            answer: "alerts"
+        },
+        {
+            title: "The condition in an if / else statement is enclosed within ____.",
+            choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+            answer: "parentheses"
+        },
+        ];
+
+        const totalQ = questions.length;
+        console.log(totalQ);
+        let currentQ = 0;
+        
+        
+        // to hide blank html when the page loads
+        $(document).ready(function(){
+            $('.mainArea').hide();
+        })
+
+        $('.btn').click(function(){
+            $('.mainArea').show();
+            $('#start').hide();
+            
+            if (currentQ === totalQ){
+                document.location.href = 'scoreboard.html'
+                
+            } else {
+                $('#question').text(questions[currentQ].title);    
+                $('#option1').text(questions[currentQ].choices[0]);
+                $('#option2').text(questions[currentQ].choices[1]);
+                $('#option3').text(questions[currentQ].choices[2]);
+                $('#option4').text(questions[currentQ].choices[3]); 
+                currentQ++ 
+            }
+        });
+            
+
+
+        
+    </script>
 </body>
 </html>
