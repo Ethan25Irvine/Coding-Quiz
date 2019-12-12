@@ -18,25 +18,19 @@
 </head>
 <body>
     <h1 class="text-center text-danger">Coding Quiz!</h1>
-      
-       
-        
 
-    <!-- This div is going to allow our javascript to hide everything bellow -->
-    <div class="main container mt-5 text-center border border-primary"> 
-        <!-- start button -->
-        <button type="button" id="start" class="btn btn-lg btn-danger mr-1">Start Quiz!</button>
-
+    <div class="container mt-5 text-center "> 
+        <!-- start button and highscore button -->
+        <button type="button" class="mainButts option btn btn-lg btn-danger m-5">Start Quiz!</button>
+        <button type="button" id='highScore' class="mainButts btn btn-lg btn-danger m-5">High Scores!</button>
         <!-- this will be where our questions will go but will be empty which allows us to send what ever question we are on here and replace the old question -->
         <div class="mainArea">
             <h2 id='question'class="mt-5"></h2>
                 <!-- Possible answers for the question -->
-                <div class="row offset-lg-4 offset-md-3 offset-sm-2 mb-1">
-                    <button type="button" id='option1' class=" option btn btn-primary mr-1"></button>
+                <div class="mt-5">
+                    <button type="button" id='option1' class=" option btn btn-primary"></button>
                     <button type="button" id='option2' class=" option btn btn-primary"></button>
-                </div>
-                <div class="row offset-lg-4 offset-md-3 offset-sm-2 mb-5">
-                    <button type="button" id='option3' class=" option btn btn-primary mr-1"></button>
+                    <button type="button" id='option3' class=" option btn btn-primary"></button>
                     <button type="button" id='option4' class=" option btn btn-primary"></button>
                 </div>
         </div>
@@ -69,12 +63,12 @@
             $('.mainArea').hide();
         })
 
-        $('.btn').click(function(){
+        $('.option').click(function(){
             $('.mainArea').show();
-            $('#start').hide();
+            $('.mainButts').hide();
             
             if (currentQ === totalQ){
-                document.location.href = 'scoreboard.html'
+                document.location.href = 'enterscore.html';
                 
             } else {
                 $('#question').text(questions[currentQ].title);    
@@ -85,7 +79,12 @@
                 currentQ++ 
             }
         });
-            
+
+
+
+        $('#highScore').click(function(){
+            document.location.href = 'scoreboard.html';
+        });
 
 
         

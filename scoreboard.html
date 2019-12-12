@@ -9,11 +9,37 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <!-- link to bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- link to jquery -->
+        <script
+        src="http://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
+        </script>
+        <!-- link to other files in folder -->
+        <script src="script.js"></script>
     </head>
     <body>
+        <h1 class="text-center text-danger mb-5">HighScores!</h1>
+         
+        <div class="container border border-danger text col-lg-6">
+            <div class="row">
+                <p class="offset-lg-1 mr-1">1.</p>
+                <p class=" mr-1">Initials</p>
+                <p>SCCCCCOOOOORRRREEEEEEEBBBBOOOOOAAARRRRDDDD</p>
+            </div>
+        </div>
+
+       <p class=" startPage text-center"><u>Start Page</u></p>
        
-        <img src="https://sayingimages.com/wp-content/uploads/very-nice-borat-meme.jpg" width="800px" height="600px">
         
+        <script>
+            $('.startPage').click(function(){
+                document.location.href='index.html';
+            });
+
+            
+        </script>
     </body>
 </html>
