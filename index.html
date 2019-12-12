@@ -18,13 +18,15 @@
 </head>
 <body>
     <h1 class="text-center text-danger">Coding Quiz!</h1>
+    <p id='timer'class='text-center text-primary'></p>
 
     <div class="container mt-5 text-center "> 
         <!-- start button and highscore button -->
-        <button type="button" class="mainButts option btn btn-lg btn-danger m-5">Start Quiz!</button>
+        <button type="button" class="mainButts start option btn btn-lg btn-danger m-5">Start Quiz!</button>
         <button type="button" id='highScore' class="mainButts btn btn-lg btn-danger m-5">High Scores!</button>
         <!-- this will be where our questions will go but will be empty which allows us to send what ever question we are on here and replace the old question -->
         <div class="mainArea">
+            
             <h2 id='question'class="mt-5"></h2>
                 <!-- Possible answers for the question -->
                 <div class="mt-5">
@@ -56,7 +58,8 @@
         const totalQ = questions.length;
         console.log(totalQ);
         let currentQ = 0;
-        
+        let score = 0;
+        console.log(score);
         
         // to hide blank html when the page loads
         $(document).ready(function(){
@@ -81,12 +84,26 @@
         });
 
 
-
+        // takes you to the scoreboard when you press the highscore button
         $('#highScore').click(function(){
             document.location.href = 'scoreboard.html';
         });
 
+        // Timer
+        $('.start').click(function(){
+            let timeleft = 75;
+            const downloadTimer = setInterval(function(){
+                $("#timer").text(timeleft + " seconds remaining");
+                timeleft -= 1;
+                if(timeleft <= 0){
+                    clearInterval(downloadTimer);
+                    
+                }
+            }, 1000);     
+        });
+        
 
+        
         
     </script>
 </body>
