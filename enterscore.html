@@ -14,12 +14,12 @@
     crossorigin="anonymous">
     </script>
     <!-- link to other files in folder -->
-    <script src="script.js"></script>
+    
 </head>
 <body>
     <h1 class="text-center text-danger ">Coding Quiz!</h1>
     <div class="container mt-5">
-        <p class="offset-lg-4 offset-md-3 offset-sm-2">Your Score: </p>
+        <p class=" score offset-lg-4 offset-md-3 offset-sm-2"></p>
         <div class="row offset-lg-4 offset-md-3 offset-sm-2">
             <form >
             <input class='form-control'placeholder="Enter Initials"></input>
@@ -29,9 +29,15 @@
     </div>
 
     <script>
+        $(document).ready(function(){
+            $('.score').text(localStorage.getItem('theScore'))
+        });
+
+        
         $('.btn').click(function(){
             document.location.href = 'scoreboard.html';
         });
     </script>
+    <script type='text/javascript' src="script.js"></script>
 </body>
 </html>
