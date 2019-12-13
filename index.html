@@ -14,7 +14,7 @@
    crossorigin="anonymous">
    </script>
     <!-- link to other files in folder -->
-    <script src="script.js"></script>
+    <script type='text.javascript' src="script.js"></script>
 </head>
 <body>
     <h1 class="text-center text-danger">Coding Quiz!</h1>
@@ -22,7 +22,7 @@
 
     <div class="container mt-5 text-center "> 
         <!-- start button and highscore button -->
-        <button type="button" class="mainButts start option btn btn-lg btn-danger m-5">Start Quiz!</button>
+        <button type="button" class="mainButts start qButtons btn btn-lg btn-danger m-5">Start Quiz!</button>
         <button type="button" id='highScore' class="mainButts btn btn-lg btn-danger m-5">High Scores!</button>
         <!-- this will be where our questions will go but will be empty which allows us to send what ever question we are on here and replace the old question -->
         <div class="mainArea">
@@ -30,10 +30,10 @@
             <h2 id='question'class="mt-5"></h2>
                 <!-- Possible answers for the question -->
                 <div class="mt-5">
-                    <button type="button" id='option1' class=" option btn btn-primary"></button>
-                    <button type="button" id='option2' class=" option btn btn-primary"></button>
-                    <button type="button" id='option3' class=" option btn btn-primary"></button>
-                    <button type="button" id='option4' class=" option btn btn-primary"></button>
+                    <button type="button" id='option1' class=" qButtons options btn btn-primary"></button>
+                    <button type="button" id='option2' class=" qButtons options btn btn-primary"></button>
+                    <button type="button" id='option3' class=" qButtons options btn btn-primary"></button>
+                    <button type="button" id='option4' class=" qButtons options btn btn-primary"></button>
                 </div>
         </div>
     </div> 
@@ -47,6 +47,7 @@
             title: "Commonly used data types DO NOT include:",
             choices: ["strings", "booleans", "alerts", "numbers"],
             answer: "alerts"
+            
         },
         {
             title: "The condition in an if / else statement is enclosed within ____.",
@@ -54,7 +55,7 @@
             answer: "parentheses"
         },
         ];
-
+       
         const totalQ = questions.length;
         console.log(totalQ);
         let currentQ = 0;
@@ -64,26 +65,45 @@
         // to hide blank html when the page loads
         $(document).ready(function(){
             $('.mainArea').hide();
+            localStorage.setItem('answer', questions[0].answer);
+            
         })
-
-        $('.option').click(function(){
+        
+        $('.qButtons').click(function(){
             $('.mainArea').show();
             $('.mainButts').hide();
             
             if (currentQ === totalQ){
-                document.location.href = 'enterscore.html';
+                // document.location.href = 'enterscore.html';
                 
             } else {
+                localStorage.setItem('answer', questions[currentQ].answer);
                 $('#question').text(questions[currentQ].title);    
                 $('#option1').text(questions[currentQ].choices[0]);
                 $('#option2').text(questions[currentQ].choices[1]);
                 $('#option3').text(questions[currentQ].choices[2]);
                 $('#option4').text(questions[currentQ].choices[3]); 
                 currentQ++ 
+                
             }
         });
-
-
+            
+         
+        $('.options').click(function(){
+            
+            localStorage.setItem('userChoice',this.textContent);
+            let ans = localStorage.getItem('answer')
+            let userAns = localStorage.getItem('userChoice');
+            if (userAns === ans){
+                score++;
+            }
+             
+        });
+       
+        
+        
+       
+        
         // takes you to the scoreboard when you press the highscore button
         $('#highScore').click(function(){
             document.location.href = 'scoreboard.html';
@@ -91,15 +111,14 @@
 
         // Timer
         $('.start').click(function(){
-            let timeleft = 75;
+            let timeleft = 5;
             const downloadTimer = setInterval(function(){
                 $("#timer").text(timeleft + " seconds remaining");
                 timeleft -= 1;
                 if(timeleft <= 0){
-                    clearInterval(downloadTimer);
-                    
+                    // document.location.href = 'enterscore.html';
                 }
-            }, 1000);     
+            },1000);     
         });
         
 
