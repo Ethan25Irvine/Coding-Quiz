@@ -28,7 +28,6 @@
     }
     
   if(localStorage.getItem('theScore')){ 
-      
       window.score = localStorage.getItem('theScore')
   } else {
       window.score = 0;
@@ -44,8 +43,6 @@
         $('.mainArea').hide();
         // this makes it so that the answer for the first question is ready on load
         localStorage.setItem('answer', questions[0].answer);
-        
-      
   });
   
   $('.qButtons').click(function(){
